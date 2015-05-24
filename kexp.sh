@@ -1,0 +1,1 @@
+mplayer  -loop 0 -playlist http://live-mp3-128.kexp.org:8000/listen.pls < /dev/null | grep --line-buffered "StreamTitle='.*S" -o | grep --line-buffered "'.*'" -o > mus & tail -n0 -f mus | while read line; do notify-send "Music Change" "$line";done

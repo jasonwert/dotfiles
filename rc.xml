@@ -39,7 +39,7 @@
          following: 'Mouse' - where the mouse is, or 'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>HackStation</name>
+    <name>Bunsen-Blackish</name>
     <titleLayout>LIMC</titleLayout>
     <!--
       avaible characters are NDSLIMC, each can occur at most once.
@@ -113,13 +113,14 @@
        during a session these are default values to use when other ones are not already set
        by other applications, or saved in your session use obconf if you want to change these without having to log out
        and back in -->
-    <number>4</number>
+    <number>5</number>
     <firstdesk>1</firstdesk>
     <names>
       <name>1 - Browser</name>
       <name>2 - IM</name>
       <name>3 - IRC</name>
       <name>4 - Terminal</name>
+      <name>5- Multimedia</name>
     </names>
     <popupTime>905</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -190,12 +191,6 @@
         <wrap>yes</wrap>
       </action>
     </keybind>
-    <keybind key="C-A-Down">
-      <action name="GoToDesktop">
-        <to>down</to>
-        <wrap>yes</wrap>
-      </action>
-    </keybind>
     <keybind key="S-A-Left">
       <action name="SendToDesktop">
         <to>left</to>
@@ -211,12 +206,6 @@
     <keybind key="S-A-Up">
       <action name="SendToDesktop">
         <to>up</to>
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="S-A-Down">
-      <action name="SendToDesktop">
-        <to>down</to>
         <wrap>no</wrap>
       </action>
     </keybind>
@@ -303,23 +292,23 @@
     </keybind>
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
-        <command>amixer -q set Master,0 5%+</command>
+        <command>/usr/bin/pulseaudio-ctl up</command>
       </action>
     </keybind>
     <!-- Keybindings for volume keys -->
     <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
-        <command>amixer -q set Master,0 5%-</command>
+        <command>/usr/bin/pulseaudio-ctl down</command>
       </action>
     </keybind>
     <keybind key="XF86AudioMute">
       <action name="Execute">
-        <command>amixer -q set Master,0 toggle</command>
+        <command>/usr/bin/pulseaudio-ctl mute</command>
       </action>
     </keybind>
     <keybind key="XF86AudioMicMute">
       <action name="Execute">
-        <command>amixer -q set Mic 1,0 toggle</command>
+        <command>/usr/bin/pulseaudio-ctl mute-input</command>
       </action>
     </keybind>
     <!-- Keybindings for window switching with the arrow keys -->
@@ -362,13 +351,22 @@
         <command>~/.config/dmenu/dmenu-bind.sh</command>
       </action>
     </keybind>
+    <keybind key="C-A-Down">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>skippy-xd</name>
+        </startupnotify>
+        <command>skippy-xd</command>
+      </action>
+    </keybind>
     <keybind key="W-f">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>pcmanfm</name>
+          <name>thunar</name>
         </startupnotify>
-        <command>pcmanfm</command>
+        <command>thunar</command>
       </action>
     </keybind>
     <keybind key="W-t">
@@ -462,7 +460,7 @@
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>pcmanfm</name>
+          <name>thunar</name>
         </startupnotify>
         <command>gksudo synaptic</command>
       </action>
@@ -1004,15 +1002,19 @@
     <application class="Terminator" name="terminator" type="normal">
       <desktop>4</desktop>
       <focus>yes</focus>
+      <position force="yes">
+        <x>119</x>
+        <y>104</y>
+      </position>
     </application>
     <application class="Pidgin" name="Pidgin" role="conversation" type="normal">
       <desktop>2</desktop>
-      <skip_taskbar>no</skip_taskbar>
+      <skip_taskbar>yes</skip_taskbar>
       <skip_pager>no</skip_pager>
       <focus>yes</focus>
     </application>
     <application name="playonlinux">
-      <desktop>4</desktop>
+      <desktop>5</desktop>
       <maximized>no</maximized>
       <focus>no</focus>
     </application>
@@ -1023,9 +1025,6 @@
       <skip_pager>no</skip_pager>
       <skip_taskbar>no</skip_taskbar>
       <desktop>2</desktop>
-    </application>
-    <application class="Chromium" name="chromium*" role="browser" type="normal">
-      <desktop>1</desktop>
     </application>
     <application class="Kupfer.py" name="kupfer.py" type="utility">
       <desktop>default</desktop>
@@ -1039,7 +1038,7 @@
     <application class="Clementine" name="clementine" type="normal">
       <skip_taskbar>no</skip_taskbar>
       <skip_pager>no</skip_pager>
-      <desktop>4</desktop>
+      <desktop>5</desktop>
     </application>
     <application class="Chromium" name="Chromium" role="browser" type="normal">
       <desktop>1</desktop>
@@ -1047,6 +1046,14 @@
     </application>
     <application class="Filezilla" name="filezilla" type="normal">
       <desktop>4</desktop>
+      <focus>yes</focus>
+    </application>
+    <application class="chromium-browser" name="chromium-browser" role="browser" type="normal">
+      <desktop>1</desktop>
+      <focus>yes</focus>
+    </application>
+    <application class="Spotify" name="spotify" type="normal">
+      <desktop>5</desktop>
       <focus>yes</focus>
     </application>
   </applications>

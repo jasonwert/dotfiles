@@ -36,7 +36,7 @@
 		<item label="File Manager">
 			<action name="Execute">
 				<command>
-					pcmanfm
+					thunar
 				</command>
 			</action>
 		</item>
@@ -79,7 +79,7 @@
 			</item>
 			<item label="Google Earth">
 				<action name="Execute">
-					<command>googleearth</command>
+					<command>google-earth</command>
 				</action>
 			</item>
 			<item label="Kupfer">
@@ -102,24 +102,19 @@
 			<item label="File Manager">
 				<action name="Execute">
 					<command>
-						pcmanfm
+						thunar
 					</command>
 				</action>
 			</item>
 			<item label="File Manager (root)">
 				<action name="Execute">
 					<command>
-						gksudo pcmanfm
+						gksudo thunar
 					</command>
 				</action>
 			</item>
 		</menu>
 		<menu id="root-menu-652852" label="Games">
-			<item label="freeCIV">
-				<action name="Execute">
-					<execute>freeciv-gtk3</execute>
-				</action>
-			</item>
 			<menu id="root-menu-652852-22333" label="Emulation">
 				<item label="Nintendo">
 					<action name="Execute">
@@ -131,21 +126,46 @@
 						<command>desmume</command>
 					</action>
 				</item>
+				<item label="Nintendo 64">
+					<action name="Execute">
+						<command>mupen64plus-qt</command>
+					</action>
+				</item>
 				<item label="Super Nintendo">
 					<action name="Execute">
 						<command>zsnes</command>
 					</action>
 				</item>
 			</menu>
+			<item label="freeCIV">
+				<action name="Execute">
+					<execute>freeciv-gtk3</execute>
+				</action>
+			</item>
 			<item label="Minecraft">
 				<action name="Execute">
 					<command>java -jar ~/bin/Minecraft.jar</command>
 				</action>
 			</item>
+				<item label="openTTD">
+				<action name="Execute">
+					<execute>openttd</execute>
+				</action>
+			</item>
 			<menu execute="/home/wert/.config/openbox/polmenu.sh" id="playon" label="PlayOnLinux"/>
 			<menu execute="ob-steamapps-pipemenu" id="pipe-gamesmenu" label="Steam"/>
+			<item label="SuperTuxKart">
+				<action name="Execute">
+					<execute>supertuxkart</execute>
+				</action>
+			</item>
 		</menu>
 		<menu id="graphics" label="Graphics">
+			<item label="gColor2">
+				<action name="Execute">
+					<execute>gcolor2</execute>
+				</action>
+			</item>
 			<item label="GIMP">
 				<action name="Execute">
 					<command>
@@ -166,13 +186,6 @@
 				</action>
 			</item>
 			<menu id="graphicsScreenshots" label="Take Screenshot">
-				<item label="Screenshooter">
-					<action name="Execute">
-						<command>
-							xfce4-screenshooter
-						</command>
-					</action>
-				</item>
 				<separator label="scrot"/>
 				<item label="Now">
 					<action name="Execute">
@@ -210,6 +223,11 @@
 					<command>clementine</command>
 				</action>
 			</item>
+			<item label="EasyTAG">
+				<action name="Execute">
+					<execute>easytag</execute>
+				</action>
+			</item>
 			<item label="VLC Media Player">
 				<action name="Execute">
 					<command>
@@ -224,9 +242,14 @@
 					</command>
 				</action>
 			</item>
-			<item label="Kazam">
+			<item label="SimpleScreenRecorder">
 				<action name="Execute">
-					<command>kazam</command>
+					<command>simplescreenrecorder</command>
+				</action>
+			</item>
+			<item label="Spotify">
+				<action name="Execute">
+					<execute>spotify</execute>
 				</action>
 			</item>
 			<menu id="multimedia-575715" label="Streaming">
@@ -258,10 +281,15 @@
 					</command>
 				</action>
 			</item>
-			<menu execute="~/.config/openbox/xmms2/xmms2-OpenboxMenu.py" id="xmms2-menu" label="xmms2"/>
+			<menu execute="/home/wert/.config/obmocmenu-0.8.4/obmocmenu" id="obmocmenu" label="Moc"/>
 		</menu>
 		<menu id="network" label="Network">
 			<menu execute="cb-x-www-browser-pipemenu" id="wwwbrowsers" label="WWW Browsers"/>
+			<item label="Android Tether">
+				<action name="Execute">
+					<execute>terminator --new-tab --command=&quot;sudo ~/Tether/linux/run.sh&quot;</execute>
+				</action>
+			</item>
 			<item label="Filezilla">
 				<action name="Execute">
 					<command>filezilla</command>
@@ -279,17 +307,10 @@
 					</command>
 				</action>
 			</item>
-			<item label="Remote Filesystems">
-				<action name="Execute">
-					<command>
-						gigolo
-					</command>
-				</action>
-			</item>
 			<menu execute="cb-remote-desktop-pipemenu" id="remotedesktop" label="Remote Desktop"/>
 			<item label="RipMe">
 				<action name="Execute">
-					<execute>java -jar ~/bin/ripme.jar</execute>
+					<execute>java -jar ~/ripme.jar</execute>
 				</action>
 			</item>
 			<item label="PAC">
@@ -374,13 +395,6 @@
 					<action name="Execute">
 						<command>
 							terminator --command=&quot;man conky&quot;
-						</command>
-					</action>
-				</item>
-				<item label="Wiki Page">
-					<action name="Execute">
-						<command>
-							x-www-browser http://crunchbanglinux.org/wiki/conky
 						</command>
 					</action>
 				</item>
@@ -537,9 +551,14 @@
 				</item>
 			</menu>
 			<menu id="Notifications" label="Notifications">
-				<item label="settings">
+				<item label="Dunst Settings">
 					<action name="Execute">
-						<command>xfce4-notifyd-config</command>
+						<execute>geany ~/.config/dunst/dunstrc</execute>
+					</action>
+				</item>
+				<item label="Restart Dunst">
+					<action name="Execute">
+						<execute>pkill dunst</execute>
 					</action>
 				</item>
 			</menu>
@@ -578,7 +597,11 @@
 			</item>
 		</menu>
 		<menu id="system" label="System">
-			<menu execute="cb-printing-pipemenu" id="PrintingPipeMenu" label="Printers"/>
+			<item label="Printer Setup">
+				<action name="Execute">
+					<execute>gksudo hp-setup</execute>
+				</action>
+			</item>
 			<item label="GParted">
 				<action name="Execute">
 					<command>
@@ -588,12 +611,7 @@
 			</item>
 			<item label="Back In Time">
 				<action name="Execute">
-					<command>backintime-gnome</command>
-				</action>
-			</item>
-			<item label="Simple Backups">
-				<action name="Execute">
-					<command>gksudo simple-backup-config</command>
+					<command>backintime-qt4</command>
 				</action>
 			</item>
 			<item label="Synaptic Package Manager">
@@ -616,7 +634,7 @@
 		<item label="Lock Screen">
 			<action name="Execute">
 				<command>
-					cb-lock
+					bl-lock
 				</command>
 			</action>
 		</item>

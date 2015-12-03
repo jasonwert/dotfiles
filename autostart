@@ -20,8 +20,11 @@
 ## GNOME PolicyKit and Keyring
 eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 
+## for authentication
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+
 ## Set root window colour
-hsetroot -solid "#2E3436" &
+#hsetroot -solid "#2E3436" &
 
 ## Group start:
 ## 1. nitrogen - restores wallpaper
@@ -54,15 +57,18 @@ mate-power-manager &
 ## Start Thunar Daemon
 thunar --daemon &
 
-
 ## Detect and configure touchpad. See 'man synclient' for more info.
 if egrep -iq 'touchpad' /proc/bus/input/devices; then
     synclient VertEdgeScroll=1 &
+    synclient HorizEdgeScroll=1 &
     synclient TapButton1=1 &
 fi
 
+## Run Dunst Notification
+(sleep 20s && dunst) &
+
 ## Start xscreensaver
-xscreensaver -no-splash &
+#xscreensaver -no-splash &
 
 ## Start Clipboard manager
 (sleep 3s && clipit) &
@@ -93,20 +99,26 @@ conky -q &
 ## Run Terminator
 (sleep 15s && terminator) &
 
-
 ## Run Hexchat
 (sleep 17s && hexchat) &
 
 ## Run Chromium
-(sleep 20s && chromium) &
+#(sleep 20s && chromium) &
+
+## Run Iceweasel
+(sleep 20s && iceweasel) &
 
 ## Run xfce4-panel fix
-#(sleep 7s && ~/xfce4-panelfix.sh) &
+#(sleep 7s && /home/wert/dotfiles/xfce4-panelfix.sh) &
 
 ## Run Kupfer
 (sleep 30s && kupfer --no-splash) &
 
+## Run Synergy
 (sleep 20s && synergyc -f 192.168.1.175) &
+
+## Run KDEConnect
+#(sleep 15s && indicator-kdeconnect) &
 
 #(sleep 12s && /opt/extras.ubuntu.com/pushbullet-indicator/bin/pushbullet-indicator) &
 (sleep 12s && /opt/extras.ubuntu.com/calendar-indicator/bin/calendar-indicator) &

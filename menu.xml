@@ -113,6 +113,13 @@
 					</command>
 				</action>
 			</item>
+			<item label="UNetbootin">
+				<action name="Execute">
+					<command>
+						unetbootin
+					</command>
+				</action>
+			</item>
 		</menu>
 		<menu id="root-menu-652852" label="Games">
 			<menu id="root-menu-652852-22333" label="Emulation">
@@ -218,6 +225,11 @@
 			</menu>
 		</menu>
 		<menu id="multimedia" label="Multimedia">
+			<item label="Audacity">
+				<action name="Execute">
+					<command>audacity</command>
+				</action>
+			</item>
 			<item label="Clementine">
 				<action name="Execute">
 					<command>clementine</command>
@@ -226,20 +238,6 @@
 			<item label="EasyTAG">
 				<action name="Execute">
 					<execute>easytag</execute>
-				</action>
-			</item>
-			<item label="VLC Media Player">
-				<action name="Execute">
-					<command>
-						vlc
-					</command>
-				</action>
-			</item>
-			<item label="Volume Control">
-				<action name="Execute">
-					<command>
-						pavucontrol
-					</command>
 				</action>
 			</item>
 			<item label="SimpleScreenRecorder">
@@ -274,6 +272,30 @@
 					</action>
 				</item>
 			</menu>
+			<item label="SMplayer">
+				<action name="Execute">
+					<command>smplayer</command>
+				</action>
+			</item>
+			<item label="SMTube">
+				<action name="Execute">
+					<command>smtube</command>
+				</action>
+			</item>
+			<item label="VLC Media Player">
+				<action name="Execute">
+					<command>
+						vlc
+					</command>
+				</action>
+			</item>
+			<item label="Volume Control">
+				<action name="Execute">
+					<command>
+						pavucontrol
+					</command>
+				</action>
+			</item>
 			<item label="Xfburn">
 				<action name="Execute">
 					<command>
@@ -281,7 +303,6 @@
 					</command>
 				</action>
 			</item>
-			<menu execute="/home/wert/.config/obmocmenu-0.8.4/obmocmenu" id="obmocmenu" label="Moc"/>
 		</menu>
 		<menu id="network" label="Network">
 			<menu execute="cb-x-www-browser-pipemenu" id="wwwbrowsers" label="WWW Browsers"/>
@@ -300,10 +321,10 @@
 					<command>linphone</command>
 				</action>
 			</item>
-			<item label="HexChat IRC Client">
+			<item label="Weechat  IRC Client">
 				<action name="Execute">
 					<command>
-						hexchat
+						terminator --new-tab --command="weechat-curses"
 					</command>
 				</action>
 			</item>
@@ -579,7 +600,7 @@
 			<item label="Power Management">
 				<action name="Execute">
 					<command>
-						xfce4-power-manager-settings
+						mate-manager-settings
 					</command>
 				</action>
 			</item>

@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
+<?xml version="1.0" ?><openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
   <resistance>
     <strength>10</strength>
     <screen_edge_strength>20</screen_edge_strength>
@@ -118,9 +117,9 @@
     <names>
       <name>1 - Browser</name>
       <name>2 - IM</name>
-      <name>3 - IRC</name>
-      <name>4 - Terminal</name>
-      <name>5- Multimedia</name>
+      <name>3 - Terminal</name>
+      <name>4 - Multimedia</name>
+      <name>5- Files</name>
     </names>
     <popupTime>905</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -420,7 +419,7 @@
           <enabled>true</enabled>
           <name>htop</name>
         </startupnotify>
-        <command>terminator --command="htop"</command>
+        <command>terminator --command=&quot;htop&quot;</command>
       </action>
     </keybind>
     <keybind key="W-v">
@@ -946,8 +945,8 @@
 
   # end of the example
 -->
-    <application name="firefox*">
-      <desktop>1</desktop>
+    <application name="explorer.exe" type="normal">
+      <desktop>4</desktop>
       <maximized>no</maximized>
       <focus>yes</focus>
     </application>
@@ -998,9 +997,9 @@
         <y>center</y>
       </position>
       <desktop>1</desktop>
-    </application>
+    <focus>yes</focus></application>
     <application class="Terminator" name="terminator" type="normal">
-      <desktop>4</desktop>
+      <desktop>3</desktop>
       <focus>yes</focus>
       <position force="yes">
         <x>119</x>
@@ -1014,7 +1013,7 @@
       <focus>yes</focus>
     </application>
     <application name="playonlinux">
-      <desktop>5</desktop>
+      <desktop>4</desktop>
       <maximized>no</maximized>
       <focus>no</focus>
     </application>
@@ -1038,14 +1037,14 @@
     <application class="Clementine" name="clementine" type="normal">
       <skip_taskbar>no</skip_taskbar>
       <skip_pager>no</skip_pager>
-      <desktop>5</desktop>
-    </application>
+      <desktop>4</desktop>
+    <focus>yes</focus></application>
     <application class="Chromium" name="Chromium" role="browser" type="normal">
       <desktop>1</desktop>
       <focus>yes</focus>
     </application>
     <application class="Filezilla" name="filezilla" type="normal">
-      <desktop>4</desktop>
+      <desktop>5</desktop>
       <focus>yes</focus>
     </application>
     <application class="chromium-browser" name="chromium-browser" role="browser" type="normal">
@@ -1053,7 +1052,7 @@
       <focus>yes</focus>
     </application>
     <application class="Spotify" name="spotify" type="normal">
-      <desktop>5</desktop>
+      <desktop>4</desktop>
       <focus>yes</focus>
     </application>
   </applications>

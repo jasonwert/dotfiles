@@ -100,7 +100,7 @@ conky -q &
 (sleep 15s && terminator) &
 
 ## Run Hexchat
-(sleep 17s && hexchat) &
+#(sleep 17s && hexchat) &
 
 ## Run Chromium
 #(sleep 20s && chromium) &

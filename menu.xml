@@ -113,13 +113,6 @@
 					</command>
 				</action>
 			</item>
-			<item label="UNetbootin">
-				<action name="Execute">
-					<command>
-						unetbootin
-					</command>
-				</action>
-			</item>
 		</menu>
 		<menu id="root-menu-652852" label="Games">
 			<menu id="root-menu-652852-22333" label="Emulation">

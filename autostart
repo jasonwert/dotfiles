@@ -88,7 +88,7 @@ xset b off &
 #(sleep 10s && cb-welcome --firstrun) &
 
 ## cb-fortune - have Waldorf say a little adage
-(sleep 100s && cb-fortune) &
+(sleep 90s && cb-fortune) &
 
 ## Run the conky
 conky -q &
@@ -99,11 +99,11 @@ conky -q &
 ## Run Terminator
 (sleep 15s && terminator) &
 
-## Run Hexchat
-#(sleep 17s && hexchat) &
+## Run Weechat
+(sleep 25s && terminator --new-tab --command="weechat-curses") &
 
-## Run Chromium
-#(sleep 20s && chromium) &
+## Run RedShift
+(sleep 20s && redshift-gtk) &
 
 ## Run Iceweasel
 (sleep 20s && iceweasel) &

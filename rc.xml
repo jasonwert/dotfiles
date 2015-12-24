@@ -945,8 +945,8 @@
 
   # end of the example
 -->
-    <application name="explorer.exe" type="normal">
-      <desktop>4</desktop>
+    <application name="thunar" type="normal">
+      <desktop>5</desktop>
       <maximized>no</maximized>
       <focus>yes</focus>
     </application>
@@ -1055,5 +1055,7 @@
       <desktop>4</desktop>
       <focus>yes</focus>
     </application>
-  </applications>
+  
+
+</applications>
 </openbox_config>

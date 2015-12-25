@@ -14,6 +14,7 @@ function generate_pol_menu {
 					<command>playonlinux</command>
 				</action>
 			</item>'
+		echo '<separator/>'	
 			
 ls ~/$pol_shortcuts_folder | while read; do
 

@@ -576,6 +576,7 @@
 					</action>
 				</item>
 			</menu>
+			<menu execute="bl-kb-pipemenu" id="keybinds" label="Display Keybinds"/>
 			<item label="Edit Default Applications">
 				<action name="Execute">
 					<command>

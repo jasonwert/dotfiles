@@ -15,7 +15,7 @@
 		</item>
 		<item label="Task Manager">
 			<action name="Execute">
-				<command>terminator --command=&quot;htop&quot;</command>
+				<command>terminator --new-tab --command=&quot;htop&quot;</command>
 			</action>
 		</item>
 		<separator/>
@@ -89,7 +89,7 @@
 			</item>
 			<item label="Task Manager (htop)">
 				<action name="Execute">
-					<command>terminator --command=&quot;htop&quot;</command>
+					<command>terminator --new-tab --command=&quot;htop&quot;</command>
 				</action>
 			</item>
 			<item label="Terminator Terminal">
@@ -137,6 +137,8 @@
 					</action>
 				</item>
 			</menu>
+			<menu execute="/home/wert/.config/openbox/polmenu.sh" id="playon" label="PlayOnLinux"/>
+			<menu execute="ob-steamapps-pipemenu" id="pipe-gamesmenu" label="Steam"/>
 			<item label="freeCIV">
 				<action name="Execute">
 					<execute>freeciv-gtk3</execute>
@@ -152,8 +154,6 @@
 					<execute>openttd</execute>
 				</action>
 			</item>
-			<menu execute="/home/wert/.config/openbox/polmenu.sh" id="playon" label="PlayOnLinux"/>
-			<menu execute="ob-steamapps-pipemenu" id="pipe-gamesmenu" label="Steam"/>
 			<item label="SuperTuxKart">
 				<action name="Execute">
 					<execute>supertuxkart</execute>
@@ -304,17 +304,17 @@
 					<execute>terminator --new-tab --command=&quot;sudo ~/Tether/linux/run.sh&quot;</execute>
 				</action>
 			</item>
+			<item label="Ekiga">
+				<action name="Execute">
+					<command>ekiga</command>
+				</action>
+			</item>
 			<item label="Filezilla">
 				<action name="Execute">
 					<command>filezilla</command>
 				</action>
 			</item>
-			<item label="Linphone">
-				<action name="Execute">
-					<command>linphone</command>
-				</action>
-			</item>
-			<item label="Weechat  IRC Client">
+			<item label="Weechat IRC Client">
 				<action name="Execute">
 					<command>
 						terminator --new-tab --command="weechat-curses"

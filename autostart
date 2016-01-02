@@ -48,9 +48,6 @@ tint2 \
 ## Volume control for systray
 (sleep 2s && volumeicon) &
 
-## Volume keys daemon
-(sleep 8s && xfce4-volumed &) &
-
 ## Enable power management
 mate-power-manager &
 
@@ -117,10 +114,6 @@ conky -q &
 ## Run Synergy
 (sleep 20s && synergyc -f 192.168.1.175) &
 
-## Run KDEConnect
-#(sleep 15s && indicator-kdeconnect) &
-
-#(sleep 12s && /opt/extras.ubuntu.com/pushbullet-indicator/bin/pushbullet-indicator) &
 (sleep 12s && /opt/extras.ubuntu.com/calendar-indicator/bin/calendar-indicator) &
 
 

@@ -38,7 +38,7 @@
          following: 'Mouse' - where the mouse is, or 'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Bunsen-Blackish</name>
+    <name>HackStation</name>
     <titleLayout>LIMC</titleLayout>
     <!--
       avaible characters are NDSLIMC, each can occur at most once.
@@ -247,12 +247,7 @@
     </keybind>
     <keybind key="Print">
       <action name="Execute">
-        <command>xfce4-screenshooter</command>
-      </action>
-    </keybind>
-    <keybind key="A-Print">
-      <action name="Execute">
-        <command>scrot '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; viewnior ~/images/$f'</command>
+        <command>scrot -s '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; viewnior ~/images/$f'</command>
       </action>
     </keybind>
     <!-- Keybindings for window switching -->
@@ -462,15 +457,6 @@
           <name>thunar</name>
         </startupnotify>
         <command>gksudo synaptic</command>
-      </action>
-    </keybind>
-    <keybind key="F1">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>skippt-xd</name>
-        </startupnotify>
-        <command>skippy-xd-fix</command>
       </action>
     </keybind>
     <!-- A bit of tiling -->
@@ -945,18 +931,9 @@
 
   # end of the example
 -->
-    <application name="thunar" type="normal">
-      <desktop>5</desktop>
-      <maximized>no</maximized>
-      <focus>yes</focus>
-    </application>
+    
     <application name="iceweasel*">
       <desktop>1</desktop>
-      <maximized>no</maximized>
-      <focus>no</focus>
-    </application>
-    <application name="gfeedline">
-      <desktop>2</desktop>
       <maximized>no</maximized>
       <focus>no</focus>
     </application>
@@ -997,7 +974,8 @@
         <y>center</y>
       </position>
       <desktop>1</desktop>
-    <focus>yes</focus></application>
+      <focus>yes</focus>
+    </application>
     <application class="Terminator" name="terminator" type="normal">
       <desktop>3</desktop>
       <focus>yes</focus>
@@ -1008,7 +986,7 @@
     </application>
     <application class="Pidgin" name="Pidgin" role="conversation" type="normal">
       <desktop>2</desktop>
-      <skip_taskbar>yes</skip_taskbar>
+      <skip_taskbar>no</skip_taskbar>
       <skip_pager>no</skip_pager>
       <focus>yes</focus>
     </application>
@@ -1022,7 +1000,7 @@
     </application>
     <application class="Pidgin" name="Pidgin" role="buddy_list" type="normal">
       <skip_pager>no</skip_pager>
-      <skip_taskbar>no</skip_taskbar>
+      <skip_taskbar>yes</skip_taskbar>
       <desktop>2</desktop>
     </application>
     <application class="Kupfer.py" name="kupfer.py" type="utility">
@@ -1038,7 +1016,8 @@
       <skip_taskbar>no</skip_taskbar>
       <skip_pager>no</skip_pager>
       <desktop>4</desktop>
-    <focus>yes</focus></application>
+      <focus>yes</focus>
+    </application>
     <application class="Chromium" name="Chromium" role="browser" type="normal">
       <desktop>1</desktop>
       <focus>yes</focus>
@@ -1051,11 +1030,6 @@
       <desktop>1</desktop>
       <focus>yes</focus>
     </application>
-    <application class="Spotify" name="spotify" type="normal">
-      <desktop>4</desktop>
-      <focus>yes</focus>
-    </application>
-  
-
-</applications>
+    
+  </applications>
 </openbox_config>

@@ -1,4 +1,5 @@
-<?xml version="1.0" ?><openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
+<?xml version="1.0"?>
+<openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
   <resistance>
     <strength>10</strength>
     <screen_edge_strength>20</screen_edge_strength>
@@ -414,7 +415,7 @@
           <enabled>true</enabled>
           <name>htop</name>
         </startupnotify>
-        <command>terminator --command=&quot;htop&quot;</command>
+        <command>terminator --command="htop"</command>
       </action>
     </keybind>
     <keybind key="W-v">
@@ -931,14 +932,13 @@
 
   # end of the example
 -->
-    
     <application name="iceweasel*">
       <desktop>1</desktop>
       <maximized>no</maximized>
       <focus>no</focus>
     </application>
     <application name="hexchat">
-      <desktop>3</desktop>
+      <desktop>2</desktop>
       <maximized>no</maximized>
       <focus>yes</focus>
     </application>
@@ -1030,6 +1030,5 @@
       <desktop>1</desktop>
       <focus>yes</focus>
     </application>
-    
   </applications>
 </openbox_config>

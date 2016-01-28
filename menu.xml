@@ -192,6 +192,13 @@
 					<command>simple-scan</command>
 				</action>
 			</item>
+					<item label="Shotwell">
+				<action name="Execute">
+					<command>
+						shotwell
+					</command>
+				</action>
+			</item>
 			<menu id="graphicsScreenshots" label="Take Screenshot">
 				<separator label="scrot"/>
 				<item label="Now">
@@ -370,18 +377,18 @@
 					</command>
 				</action>
 			</item>
-			<item label="Evince PDF Viewer">
-				<action name="Execute">
-					<command>
-						evince
-					</command>
-				</action>
-			</item>
 			<menu execute="cb-libreoffice-pipemenu" id="libreoffice" label="LibreOffice"/>
 			<item label="Google Docs">
 				<action name="Execute">
 					<command>
 						x-www-browser https://drive.google.com/
+					</command>
+				</action>
+			</item>
+			<item label="xpdf">
+				<action name="Execute">
+					<command>
+						xpdf
 					</command>
 				</action>
 			</item>

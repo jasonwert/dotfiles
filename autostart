@@ -97,7 +97,10 @@ conky -q &
 (sleep 15s && terminator) &
 
 ## Run Weechat
-(sleep 25s && terminator --new-tab --command="weechat-curses") &
+#(sleep 25s && terminator --new-tab --command="weechat-curses") &
+
+## Run Hexchat
+(sleep 15s && hexchat) &
 
 ## Run RedShift
 (sleep 20s && redshift-gtk) &

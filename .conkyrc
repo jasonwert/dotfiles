@@ -104,13 +104,14 @@ ${color}${font Open Sans Light:pixelsize=10}ARCH: ${color1}${alignr}$machine
 ${color}${font Open Sans Light:pixelsize=10}BATTERY: ${color1}$alignr${battery_percent BAT0}%
 ${color}${font Open Sans Light:pixelsize=10}UPTIME: ${color1}${alignr}${uptime}
 ${color}${font Open Sans Light:pixelsize=10}EXTERNAL IP: ${color1}${alignr}${execi 3600 wget -O - http://ip.tupeux.com | tail}
-${if_up eth0}${color}${font Open Sans Light:pixelsize=10}INTERNAL IP:${color1}${alignr}${addr eth0}${endif}${if_up wlan0}${color}${font Open Sans Light:pixelsize=10}INTERNAL IP:${color1}${alignr}${addr wlan0}${endif}
+${if_up eth0}${color}${font Open Sans Light:pixelsize=10}INTERNAL IP:${color1}${alignr}${addr eth0}${endif}${if_up wlan0}${color}${font Open Sans Light:pixelsize=10}
+INTERNAL IP:${color1}${alignr}${addr wlan0}${endif}
 ${color7}${hr}${color}
 ${font Open Sans Light:size=15}Storage
 ${color}${font Open Sans Light:pixelsize=10}/: ${color1}${alignc}${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
 ${color}${font Open Sans Light:pixelsize=10}HOME: ${color1}${alignc}${fs_used /home} / ${fs_size /home} $alignr ${fs_used_perc /home}%
 ${color}${font Open Sans Light:pixelsize=10}Home2: ${color1}${alignc}${fs_used /media/home2} / ${fs_size /media/home2} $alignr ${fs_used_perc /media/home2}%
-#${color}${font Open Sans Light:pixelsize=10}UNRAID: ${color1}${alignc}${fs_used /run/user/1000/gvfs/smb-share:server=192.168.0.150,share=jasonwert/} / ${fs_size /run/user/1000/gvfs/smb-share:server=192.168.0.150,share=jasonwert/} $alignr ${fs_used_perc /run/user/1000/gvfs/smb-share:server=192.168.0.150,share=jasonwert/}%
+${color}${font Open Sans Light:pixelsize=10}UNRAID: ${color1}${alignc}${fs_used /media/jasonwert/} / ${fs_size /media/jasonwert/} $alignr ${fs_used_perc /media/jasonwert/}%
 ${color7}${hr}${color}
 ${font Open Sans Light:size=15}CPUs/Memory
 ${color}${font Open Sans Light:pixelsize=10}CPU 1: ${color1}${alignc}${freq_g 0} ${color1}Ghz ${color2}${alignr}${cpu cpu0}${color1}%

@@ -42,11 +42,11 @@ eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 nitrogen --restore && \
 cb-compositor --start && \
 sleep 2s && \
-tint2 \
+xfce4-panel \
 ) &
 
 ## Volume control for systray
-(sleep 2s && volumeicon) &
+#(sleep 2s && volumeicon) &
 
 ## Enable power management
 mate-power-manager &
@@ -109,7 +109,7 @@ conky -q &
 (sleep 20s && iceweasel) &
 
 ## Run xfce4-panel fix
-#(sleep 7s && /home/wert/dotfiles/xfce4-panelfix.sh) &
+(sleep 7s && /home/wert/dotfiles/xfce4-panelfix.sh) &
 
 ## Run Kupfer
 (sleep 30s && kupfer --no-splash) &

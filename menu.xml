@@ -128,7 +128,7 @@
 				</item>
 				<item label="Nintendo 64">
 					<action name="Execute">
-						<command>mupen64plus-qt</command>
+						<command>m64py</command>
 					</action>
 				</item>
 				<item label="Super Nintendo">
@@ -154,18 +154,8 @@
 					<execute>openttd</execute>
 				</action>
 			</item>
-			<item label="SuperTuxKart">
-				<action name="Execute">
-					<execute>supertuxkart</execute>
-				</action>
-			</item>
 		</menu>
 		<menu id="graphics" label="Graphics">
-			<item label="gColor2">
-				<action name="Execute">
-					<execute>gcolor2</execute>
-				</action>
-			</item>
 			<item label="GIMP">
 				<action name="Execute">
 					<command>
@@ -265,17 +255,17 @@
 			<menu id="multimedia-575715" label="Streaming">
 				<item label="IPR">
 					<action name="Execute">
-						<execute>terminator --new-tab -e /home/wert/ipr.sh</execute>
+						<execute>terminator --new-tab -e /home/wert/dotfiles/ipr.sh</execute>
 					</action>
 				</item>
 				<item label="KEXP">
 					<action name="Execute">
-						<execute>terminator --new-tab -e /home/wert/kexp.sh</execute>
+						<execute>terminator --new-tab -e /home/wert/dotfiles/kexp.sh</execute>
 					</action>
 				</item>
 				<item label="MLB 2015">
 					<action name="Execute">
-						<execute>terminator --new-tab -e python mlbviewer2014/mlbviewer.py</execute>
+						<execute>terminator --new-tab -e python /usr/bin/mlbviewer.py</execute>
 					</action>
 				</item>
 				<item label="Poor Man's Spotify">
@@ -284,11 +274,6 @@
 					</action>
 				</item>
 			</menu>
-			<item label="SMTube">
-				<action name="Execute">
-					<command>smtube</command>
-				</action>
-			</item>
 			<item label="VLC Media Player">
 				<action name="Execute">
 					<command>
@@ -342,7 +327,7 @@
 					<command>pidgin</command>
 				</action>
 			</item>
-			<menu execute="cb-remote-desktop-pipemenu" id="remotedesktop" label="Remote Desktop"/>
+			<menu execute="bl-remote-desktop-pipemenu" id="remotedesktop" label="Remote Desktop"/>
 			<item label="RipMe">
 				<action name="Execute">
 					<execute>java -jar ~/ripme.jar</execute>
@@ -360,9 +345,9 @@
 					<command>wireshark</command>
 				</action>
 			</item>
-			<menu execute="cb-x-www-browser-pipemenu" id="wwwbrowsers" label="WWW Browsers"/>
+			<menu execute="bl-x-www-browser-pipemenu" id="wwwbrowsers" label="WWW Browsers"/>
 			<separator label="Services"/>
-			<menu execute="cb-dropbox-pipemenu" id="dropbox" label="Dropbox"/>
+			<menu execute="bl-dropbox-pipemenu" id="dropbox" label="Dropbox"/>
 		</menu>
 		<menu id="office" label="Office">
 			<item label="Calibre">
@@ -377,7 +362,7 @@
 					</command>
 				</action>
 			</item>
-			<menu execute="cb-libreoffice-pipemenu" id="libreoffice" label="LibreOffice"/>
+			<menu execute="bl-libreoffice-pipemenu" id="libreoffice" label="LibreOffice"/>
 			<item label="Google Docs">
 				<action name="Execute">
 					<command>
@@ -385,23 +370,22 @@
 					</command>
 				</action>
 			</item>
-			<item label="xpdf">
+			<item label="Evince PDF Viewer">
 				<action name="Execute">
 					<command>
-						xpdf
-					</command>
+                        evince
+                    </command>
 				</action>
 			</item>
 		</menu>
 		<menu execute="cb-virtual-machines-pipemenu" id="vms" label="Virtualization"/>
 		<separator/>
-		<menu execute="cb-places-pipemenu" id="pipe-placesmenu" label="Places"/>
-		<menu execute="cb-recent-files-pipemenu" id="pipe-recentfilesmenu" label="Recent Files"/>
+		<menu execute="bl-places-pipemenu" id="pipe-placesmenu" label="Places"/>
+		<menu execute="bl-recent-files-pipemenu" id="pipe-recentfilesmenu" label="Recent Files"/>
 		<menu execute="python ~/.config/openbox/processes.py" id="pipe-processes" label="Processes"/>
-		<menu execute="python ~/.config/openbox/yweather.py 49680 Fahrenheit" id="pipe-weather" label="Weather"/>
 		<separator/>
 		<menu id="settings" label="Settings">
-			<menu execute="cb-compositor" id="CompositingPipeMenu" label="Compositor"/>
+			<menu execute="bl-compositor" id="CompositingPipeMenu" label="Compositor"/>
 			<menu id="conkyconfig" label="Conky">
 				<item label="Edit .conkyrc">
 					<action name="Execute">
@@ -535,7 +519,7 @@
 			<item label="Power Management">
 				<action name="Execute">
 					<command>
-						mate-power-preferences
+						xfce4-power-manager-setting
 					</command>
 				</action>
 			</item>
@@ -546,9 +530,9 @@
 			</item>
 		</menu>
 		<menu id="system" label="System">
-						<item label="Back In Time">
+						<item label="Deja Dup">
 				<action name="Execute">
-					<command>backintime-qt4</command>
+					<command>deja-dup-preferences</command>
 				</action>
 			</item>
 			<item label="GParted">
@@ -587,18 +571,33 @@
 			</menu>
 		<!--<menu id="help" label="Help" execute="cb-help-pipemenu" />-->
 		<separator/>
-		<item label="Lock Screen">
+	<menu id="exit-menu" label="Exit">
+		<item label="Log out">
 			<action name="Execute">
 				<command>
-					bl-lock
-				</command>
+                    bl-exit --logout
+                </command>
 			</action>
 		</item>
-		<item label="Exit">
+		<item label="Suspend">
 			<action name="Execute">
 				<command>
-					tb-exit
-				</command>
+                    bl-exit --suspend
+                </command>
+			</action>
+		</item>
+		<item label="Reboot">
+			<action name="Execute">
+				<command>
+                    bl-exit --reboot
+                </command>
+			</action>
+		</item>
+		<item label="Power off">
+			<action name="Execute">
+				<command>
+                    bl-exit --poweroff
+                </command>
 			</action>
 		</item>
 	</menu>

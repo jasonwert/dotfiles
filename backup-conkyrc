@@ -1,0 +1,182 @@
+# Use Xft?
+use_xft yes
+xftfont Open Sans Light:size=8
+xftalpha 0.8
+text_buffer_size 2048
+uppercase yes
+
+# Update interval in seconds
+update_interval 1
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+background yes
+own_window yes
+#own_window_transparent yes
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_argb_visual true
+own_window_argb_value 240
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+minimum_size 200 0
+maximum_width 200
+short_units yes
+if_up_strictness link
+
+# Draw shades?
+draw_shades no
+default_shade_color 292421
+# Draw outlines?
+draw_outline no
+
+# Draw borders around text
+draw_borders no
+
+# Stippled borders?
+stippled_borders 0
+
+# border margins
+border_inner_margin 5
+border_outer_margin 0
+draw_graph_borders no
+# border width
+border_width 0
+
+# Text alignment, other possible values are commented
+alignment top_left
+#alignment top_right
+#alignment bottom_left
+#alignment bottom_right
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 10
+gap_y 50
+
+#	Distric-Thin			fonts
+#	Blue Highway
+#	Raleway
+#	Zekton
+#	Calibri
+#	Engebrechtre
+#	Opeln2001
+#	Open Sans Light
+#	Open Sans Light
+
+# -- Lua Load -- #
+#lua_load ~/.draw_bg.lua
+#lua_draw_hook_pre draw_bg
+
+#lua_load ~/.bargraph_small.lua
+#lua_draw_hook_post main_bars
+
+imlib_cache_size 0
+
+color1 0099CC
+color2 9933CC
+color3 669900
+color4 FF8800
+color5 CC0000
+color6 AAAAAA
+color7 484848
+
+
+-------------------------------------
+--  API Key
+-------------------------------------
+template6="896c389cc3f57ea67040a689b2464d78",
+
+
+-------------------------------------
+--  City ID
+-------------------------------------
+template7="5012495",
+
+
+-------------------------------------
+--  Temp Unit (default, metric, imperial)
+-------------------------------------
+template8="imperial",
+
+TEXT
+
+${execi 300 l=${template9}; l=${l%%_*}; curl -s "api.openweathermap.org/data/2.5/forecast/daily?APPID=${template6}&id=${template7}&cnt=5&units=${template8}&lang=$l" -o ~/.cache/forecast.json}\
+${execi 300 l=${template9}; l=${l%%_*}; curl -s "api.openweathermap.org/data/2.5/weather?APPID=${template6}&id=${template7}&cnt=5&units=${template8}&lang=$l" -o ~/.cache/weather.json}\
+\
+\
+\
+\
+${image ~/.harmattan-assets/misc/Ciliora-Secunda/God-Mode/bg.png -p 14,26 -s 242x571}\
+${image ~/.harmattan-assets/misc/Ciliora-Secunda/God-Mode/separator-v.png -p 95,185 -s 2x76}\
+${image ~/.harmattan-assets/misc/Ciliora-Secunda/God-Mode/separator-v.png -p 172,185 -s 2x76}\
+\
+\
+\
+\
+${color1}${voffset 172}${alignc 77}${execi 300 LANG=${template9} LC_TIME=${template9} date +%^a}${color}
+${color1}${voffset -13}${alignc}${execi 300 LANG=${template9} LC_TIME=${template9} date -d +1day +%^a}${color}
+${color1}${voffset -13}${alignc -77}${execi 300 LANG=${template9} LC_TIME=${template9} date -d +2day +%^a}${color}
+\
+\
+\
+\
+${color1}${voffset 51}${alignc 77}${execi 300 jq -r .list[0].temp.min ~/.cache/forecast.json | awk '{print int($1+0.5)}' # round num}°/${execi 300 jq -r .list[0].temp.max ~/.cache/forecast.json | awk '{print int($1+0.5)}' # round num}°${color}
+${color1}${voffset -13}${alignc}${execi 300 jq -r .list[1].temp.min ~/.cache/forecast.json | awk '{print int($1+0.5)}' # round num}°/${execi 300 jq -r .list[1].temp.max ~/.cache/forecast.json | awk '{print int($1+0.5)}' # round num}°${color}
+${color1}${voffset -13}${alignc -77}${execi 300 jq -r .list[2].temp.min ~/.cache/forecast.json | awk '{print int($1+0.5)}' # round num}°/${execi 300 jq -r .list[2].temp.max ~/.cache/forecast.json | awk '{print int($1+0.5)}' # round num}°${color}
+\
+\
+\
+\
+${goto 36}${voffset -172}${font Droid Sans :size=36}${color1}${execi 300 jq -r .main.temp ~/.cache/weather.json | awk '{print int($1+0.5)}' # round num}°${font}${color}
+${goto 46}${voffset 14}${font Droid Sans :size=12}${color1}${execi 300 jq -r .weather[0].description ~/.cache/weather.json | sed "s|\<.|\U&|g"}${font}${color}
+${color1}${alignr 52}${voffset -73}${execi 300 jq -r .main.pressure ~/.cache/weather.json | awk '{print int($1+0.5)}' # round num} hPa
+${color1}${alignr 52}${voffset 7}${execi 300 jq -r .main.humidity ~/.cache/weather.json | awk '{print int($1+0.5)}' # round num} %${color}
+${color1}${alignr 52}${voffset 7}${execi 300 jq -r .wind.speed ~/.cache/weather.json | awk '{print int($1+0.5)}' # round num}${if_match "$template8" == "metric"} m/s${else}${if_match "$template8" == "default"} m/s${else}${if_match "$template8" == "imperial"} mi/h${endif}${endif}${endif}${color}
+\
+\
+${font Open Sans Light:size=15}System Info 
+${color}${font Open Sans Light:pixelsize=10}USER: ${color1}${alignr}${exec whoami}
+${color}${font Open Sans Light:pixelsize=10}DISTRO:  ${color1}${alignr}Debian Testing
+${color}${font Open Sans Light:pixelsize=10}KERNEL: ${color1}${alignr}${kernel}
+${color}${font Open Sans Light:pixelsize=10}ARCH: ${color1}${alignr}$machine
+${color}${font Open Sans Light:pixelsize=10}BATTERY: ${color1}$alignr${battery_percent BAT0}%
+${color}${font Open Sans Light:pixelsize=10}UPTIME: ${color1}${alignr}${uptime}
+${color}${font Open Sans Light:pixelsize=10}EXTERNAL IP: ${color1}${alignr}${execi 3600 wget -O - http://ip.tupeux.com | tail}
+${if_up eth0}${color}${font Open Sans Light:pixelsize=10}INTERNAL IP:${color1}${alignr}${addr eth0}${endif}${if_up wlan0}${color}${font Open Sans Light:pixelsize=10}
+INTERNAL IP:${color1}${alignr}${addr wlan0}${endif}
+${color7}${hr}${color}
+${font Open Sans Light:size=15}Storage
+${color}${font Open Sans Light:pixelsize=10}/: ${color1}${alignc}${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
+${color}${font Open Sans Light:pixelsize=10}HOME: ${color1}${alignc}${fs_used /home} / ${fs_size /home} $alignr ${fs_used_perc /home}%
+${color}${font Open Sans Light:pixelsize=10}Home2: ${color1}${alignc}${fs_used /media/home2} / ${fs_size /media/home2} $alignr ${fs_used_perc /media/home2}%
+${color}${font Open Sans Light:pixelsize=10}UNRAID: ${color1}${alignc}${fs_used /media/jasonwert/} / ${fs_size /media/jasonwert/} $alignr ${fs_used_perc /media/jasonwert/}%
+${color7}${hr}${color}
+${font Open Sans Light:size=15}CPUs/Memory
+${color}${font Open Sans Light:pixelsize=10}CPU 1: ${color1}${alignc}${freq_g 0} ${color1}Ghz ${color2}${alignr}${cpu cpu0}${color1}%
+${color}${font Open Sans Light:pixelsize=10}CPU 2: ${color1}${alignc}${freq_g 1} ${color1}Ghz ${color2}${alignr}${cpu cpu1}${color1}%
+${color}${font Open Sans Light:pixelsize=10}CPU 3: ${color1}${alignc}${freq_g 2} ${color1}Ghz ${color2}${alignr}${cpu cpu2}${color1}%
+${color}${font Open Sans Light:pixelsize=10}CPU 4: ${color1}${alignc}${freq_g 3} ${color1}Ghz ${color2}${alignr}${cpu cpu3}${color1}%
+${color}${font Open Sans Light:pixelsize=10}CPU TEMP: ${color1}${alignr}${hwmon temp 1}°C
+${alignr}${loadgraph 25,250 FF8800 FF8800 -l}
+${color}${font Open Sans Light:pixelsize=10}RAM: ${color3}${alignr}${mem}
+${color}${font Open Sans Light:pixelsize=10}TOTAL: ${color3}${alignr}${memmax}
+#${alignr}${memgraph 20,250 FF8800 FF8800 -l}
+${color7}${hr}${color}
+${font Open Sans Light:size=15}Top Processes
+${color}${font Open Sans Light:pixelsize=10}${color}${top_mem name 1}${color1}${alignr +10}${top_mem mem_res 1}${color2}${alignr}${top_mem mem 1}${color1} %
+${color}${font Open Sans Light:pixelsize=10}${color}${top_mem name 2}${color1}${alignr +10}${top_mem mem_res 2}${color2}${alignr}${top_mem mem 2}${color1} %
+${color}${font Open Sans Light:pixelsize=10}${color}${top_mem name 3}${color1}${alignr +10}${top_mem mem_res 3}${color2}${alignr}${top_mem mem 3}${color1} %
+${color}${font Open Sans Light:pixelsize=10}${color}${top_mem name 4}${color1}${alignr +10}${top_mem mem_res 4}${color2}${alignr}${top_mem mem 4}${color1} %
+${color}${font Open Sans Light:pixelsize=10}${color}${top_mem name 5}${color1}${alignr +10}${top_mem mem_res 5}${color2}${alignr}${top_mem mem 5}${color1} %
+
+${image ~/.harmattan-assets/misc/Ciliora-Secunda/God-Mode/pressure.png -p 224,95 -s 16x16}\
+${image ~/.harmattan-assets/misc/Ciliora-Secunda/God-Mode/humidity.png -p 224,115 -s 16x16}\
+${image ~/.harmattan-assets/misc/Ciliora-Secunda/God-Mode/wind-2.png -p 224,136 -s 16x16}\
+${execi 300 cp -f ~/.harmattan-assets/icons/#fff__32/$(jq .list[0].weather[0].id ~/.cache/forecast.json).png ~/.cache/weather-1.png}${image ~/.cache/weather-1.png -p 41,207 -s 32x32}\
+${execi 300 cp -f ~/.harmattan-assets/icons/#fff__32/$(jq .list[1].weather[0].id ~/.cache/forecast.json).png ~/.cache/weather-2.png}${image ~/.cache/weather-2.png -p 119,207 -s 32x32}\
+${execi 300 cp -f ~/.harmattan-assets/icons/#fff__32/$(jq .list[2].weather[0].id ~/.cache/forecast.json).png ~/.cache/weather-3.png}${image ~/.cache/weather-3.png -p 195,207 -s 32x32}${font}${voffset -120}\

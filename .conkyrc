@@ -58,23 +58,6 @@ alignment top_left
 gap_x 10
 gap_y 50
 
-#	Distric-Thin			fonts
-#	Blue Highway
-#	Raleway
-#	Zekton
-#	Calibri
-#	Engebrechtre
-#	Opeln2001
-#	Open Sans Light
-#	Open Sans Light
-
-# -- Lua Load -- #
-#lua_load ~/.draw_bg.lua
-#lua_draw_hook_pre draw_bg
-
-#lua_load ~/.bargraph_small.lua
-#lua_draw_hook_post main_bars
-
 imlib_cache_size 0
 
 color1 0099CC

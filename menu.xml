@@ -519,7 +519,7 @@
 			<item label="Power Management">
 				<action name="Execute">
 					<command>
-						xfce4-power-manager-setting
+						xfce4-power-manager-settings
 					</command>
 				</action>
 			</item>

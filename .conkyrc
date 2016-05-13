@@ -71,21 +71,19 @@ color7 484848
 
 
 TEXT
-${execi 300 l=${template9}; l=${l%%_*}; curl -s "api.openweathermap.org/data/2.5/forecast/daily?APPID=${896c389cc3f57ea67040a689b2464d78}&id=${5012495}&cnt=5&units=${imperial}&lang=$l" -o ~/.cache/forecast.json}\
-${execi 300 l=${template9}; l=${l%%_*}; curl -s "api.openweathermap.org/data/2.5/weather?APPID=${896c389cc3f57ea67040a689b2464d78}&id=${5012495}&cnt=5&units=${imperial}&lang=$l" -o ~/.cache/weather.json}\
+${execi 300 curl -s "http://api.openweathermap.org/data/2.5/forecast/daily?APPID=896c389cc3f57ea67040a689b2464d78&id=5012495&cnt=5&units=imperial" -o ~/.cache/forecast.json}\
+${execi 300 curl -s "api.openweathermap.org/data/2.5/weather?APPID=896c389cc3f57ea67040a689b2464d78&id=5012495&cnt=5&units=imperial" -o ~/.cache/weather.json}\
 \
 \
 \
 \
-${image ~/.harmattan-assets/misc/Ciliora-Secunda/God-Mode/separator-v.png -p 95,195 -s 2x76}\
-${image ~/.harmattan-assets/misc/Ciliora-Secunda/God-Mode/separator-v.png -p 172,295 -s 2x76}\
 \
 \
 \
 \
-${color1}${voffset 192}${alignc 77}${execi 300 LANG=${template9} LC_TIME=${template9} date +%^a}${color}
-${color1}${voffset -13}${alignc}${execi 300 LANG=${template9} LC_TIME=${template9} date -d +1day +%^a}${color}
-${color1}${voffset -13}${alignc -77}${execi 300 LANG=${template9} LC_TIME=${template9} date -d +2day +%^a}${color}
+${color1}${voffset 192}${alignc 77}${execi 300 LANG=en_US.UTF-8 LC_TIME=en_US.UTF-8 date +%^a}${color}
+${color1}${voffset -13}${alignc}${execi 300 LANG=en_US.UTF-8 LC_TIME=en_US.UTF-8 date -d +1day +%^a}${color}
+${color1}${voffset -13}${alignc -77}${execi 300 LANG=en_US.UTF-8 LC_TIME=en_US.UTF-8 date -d +2day +%^a}${color}
 \
 \
 \
@@ -99,17 +97,19 @@ ${color1}${voffset -13}${alignc -77}${execi 300 jq -r .list[2].temp.min ~/.cache
 \
 \
 \
-${goto 30}${voffset -172}${font Droid Sans :size=36}${color}${execi 300 jq -r .main.temp ~/.cache/weather.json | awk '{print int($1+0.5)}' # round num}°${font}${color}
+${goto 30}${voffset -152}${font Droid Sans :size=36}${color}${execi 300 jq -r .main.temp ~/.cache/weather.json | awk '{print int($1+0.5)}' # round num}°${font}${color}
 ${goto 30}${voffset 7}${font Droid Sans :size=12}${color1}${execi 300 jq -r .weather[0].description ~/.cache/weather.json | sed "s|\<.|\U&|g"}${font}${color}
-${color1}${alignr 32}${voffset -63}${execi 300 jq -r .main.pressure ~/.cache/weather.json | awk '{print int($1+0.5)}' # round num} hPa
+${color1}${alignr 32}${voffset -83}${execi 300 jq -r .main.pressure ~/.cache/weather.json | awk '{print int($1+0.5)}' # round num} hPa
 ${color1}${alignr 32}${voffset 7}${execi 300 jq -r .main.humidity ~/.cache/weather.json | awk '{print int($1+0.5)}' # round num} %${color}
 ${color1}${alignr 32}${voffset 7}${execi 300 jq -r .wind.speed ~/.cache/weather.json | awk '{print int($1+0.5)}' # round num} mi/h${color}
 \
 
-${voffset -167}${font Droid Sans Mono :size=32}${alignc}${color}${time %I:%M}${font}${color}
-${voffset 4}${font Droid Sans :size=18}${alignc}${color3}${execi 300 LANG=${template9} LC_TIME=${template9} date +"%a %B %-d, %Y"}${font}${color}
+${voffset -170}${font Droid Sans Mono :size=32}${alignc}${color}${time %I:%M}${font}${color}
+${voffset 4}${font Droid Sans :size=18}${alignc}${color3}${execi 300 LANG=en_US.UTF-8 LC_TIME=en_US.UTF-8 date +"%a %B %-d, %Y"}${font}${color}
+${color7}${hr}${color}
+${font Open Sans Light:size=15}Weather ${color}
 \
-${voffset 188}${color7}${hr}${color}
+${voffset 150}${color7}${hr}${color}
 ${font Open Sans Light:size=15}System Info 
 ${color}${font Open Sans Light:pixelsize=10}USER: ${color1}${alignr}${exec whoami}
 ${color}${font Open Sans Light:pixelsize=10}DISTRO:  ${color1}${alignr}BunsenLabs Hydrogen
@@ -131,11 +131,11 @@ ${color}${font Open Sans Light:pixelsize=10}CPU 1: ${color1}${alignc}${freq_g 0}
 ${color}${font Open Sans Light:pixelsize=10}CPU 2: ${color1}${alignc}${freq_g 1} ${color1}Ghz ${color2}${alignr}${cpu cpu1}${color1}%
 ${color}${font Open Sans Light:pixelsize=10}CPU 3: ${color1}${alignc}${freq_g 2} ${color1}Ghz ${color2}${alignr}${cpu cpu2}${color1}%
 ${color}${font Open Sans Light:pixelsize=10}CPU 4: ${color1}${alignc}${freq_g 3} ${color1}Ghz ${color2}${alignr}${cpu cpu3}${color1}%
+${alignc}${cpubar 10,180 FF8800 FF8800 -l}
 ${color}${font Open Sans Light:pixelsize=10}CPU TEMP: ${color1}${alignr}${hwmon temp 1}°C
-${alignr}${loadgraph 25,250 FF8800 FF8800 -l}
 ${color}${font Open Sans Light:pixelsize=10}RAM: ${color3}${alignr}${mem}
 ${color}${font Open Sans Light:pixelsize=10}TOTAL: ${color3}${alignr}${memmax}
-#${alignr}${memgraph 20,250 FF8800 FF8800 -l}
+${alignc}${membar 10,180 FF8800 FF8800 -l}
 ${color7}${hr}${color}
 ${font Open Sans Light:size=15}Top Processes
 ${color}${font Open Sans Light:pixelsize=10}${color}${top_mem name 1}${color1}${alignr +10}${top_mem mem_res 1}${color2}${alignr}${top_mem mem 1}${color1} %

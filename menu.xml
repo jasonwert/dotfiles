@@ -242,9 +242,9 @@
 					<command>handbrake-gtk</command>
 				</action>
 			</item>
-			<item label="SimpleScreenRecorder">
+			<item label="RecordMyDesktop">
 				<action name="Execute">
-					<command>simplescreenrecorder</command>
+					<command>gtk-recordmydesktop</command>
 				</action>
 			</item>
 			<item label="Spotify">
@@ -263,7 +263,7 @@
 						<execute>terminator --new-tab -e /home/wert/dotfiles/kexp.sh</execute>
 					</action>
 				</item>
-				<item label="MLB 2015">
+				<item label="MLB 2016">
 					<action name="Execute">
 						<execute>terminator --new-tab -e python /usr/bin/mlbviewer.py</execute>
 					</action>
@@ -515,7 +515,12 @@
 			</item>
 		</menu>
 		<menu id="system" label="System">
-						<item label="Deja Dup">
+			<item label="BLOB">
+				<action name="Execute">
+					<command>bl-obthemes</command>
+				</action>
+			</item>
+			<item label="Deja Dup">
 				<action name="Execute">
 					<command>deja-dup-preferences</command>
 				</action>

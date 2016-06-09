@@ -81,6 +81,7 @@ ${execi 300 curl -s "api.openweathermap.org/data/2.5/weather?APPID=896c389cc3f57
 \
 \
 \
+\
 ${color1}${voffset 192}${alignc 77}${execi 300 LANG=en_US.UTF-8 LC_TIME=en_US.UTF-8 date +%^a}${color}
 ${color1}${voffset -13}${alignc}${execi 300 LANG=en_US.UTF-8 LC_TIME=en_US.UTF-8 date -d +1day +%^a}${color}
 ${color1}${voffset -13}${alignc -77}${execi 300 LANG=en_US.UTF-8 LC_TIME=en_US.UTF-8 date -d +2day +%^a}${color}
@@ -117,14 +118,14 @@ ${color}${font Open Sans Light:pixelsize=10}KERNEL: ${color1}${alignr}${kernel}
 ${color}${font Open Sans Light:pixelsize=10}ARCH: ${color1}${alignr}$machine
 ${color}${font Open Sans Light:pixelsize=10}BATTERY: ${color1}$alignr${battery_percent BAT0}%
 ${color}${font Open Sans Light:pixelsize=10}UPTIME: ${color1}${alignr}${uptime}
-${color}${font Open Sans Light:pixelsize=10}EXTERNAL IP: ${color1}${alignr}${execi 3600 wget -O - http://ip.tupeux.com | tail}
+#${color}${font Open Sans Light:pixelsize=10}EXTERNAL IP: ${color1}${alignr}${execi 3600 wget -O - http://ip.tupeux.com | tail}
 ${if_up eth0}${color}${font Open Sans Light:pixelsize=10}INTERNAL IP:${color1}${alignr}${if_existing /proc/net/route wlan0}${addr wlan0}${else}${if_existing /proc/net/route eth0}${color1}${alignr}${addr eth0}${else}0.0.0.0${color}${endif}${endif}
 ${color7}${hr}${color}
 ${font Open Sans Light:size=15}Storage
 ${color}${font Open Sans Light:pixelsize=10}/: ${color1}${alignc}${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
 ${color}${font Open Sans Light:pixelsize=10}HOME: ${color1}${alignc}${fs_used /home} / ${fs_size /home} $alignr ${fs_used_perc /home}%
 ${color}${font Open Sans Light:pixelsize=10}Home2: ${color1}${alignc}${fs_used /media/home2} / ${fs_size /media/home2} $alignr ${fs_used_perc /media/home2}%
-${color}${font Open Sans Light:pixelsize=10}UNRAID: ${color1}${alignc}${fs_used /media/jasonwert/} / ${fs_size /media/jasonwert/} $alignr ${fs_used_perc /media/jasonwert/}%
+#${color}${font Open Sans Light:pixelsize=10}UNRAID: ${color1}${alignc}${fs_used /media/jasonwert/} / ${fs_size /media/jasonwert/} $alignr ${fs_used_perc /media/jasonwert/}%
 ${color7}${hr}${color}
 ${font Open Sans Light:size=15}CPUs/Memory
 ${color}${font Open Sans Light:pixelsize=10}CPU 1: ${color1}${alignc}${freq_g 0} ${color1}Ghz ${color2}${alignr}${cpu cpu0}${color1}%
